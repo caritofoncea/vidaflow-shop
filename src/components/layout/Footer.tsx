@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useI18n } from "@/i18n";
 import { MessageCircle, Mail, Globe, Heart, Play, Music } from "lucide-react";
 
@@ -13,10 +14,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">V</span>
-              </div>
+            <Link href="/" className="flex items-center gap-2.5 mb-4">
+              <Image
+                src="/images/logo-mark.webp"
+                alt="VidaFlow logo"
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-full object-cover"
+              />
               <span className="text-xl font-semibold text-white tracking-tight">
                 Vida<span className="text-emerald-400">Flow</span>
               </span>

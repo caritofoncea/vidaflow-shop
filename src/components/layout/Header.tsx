@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useI18n, type Locale, type Country } from "@/i18n";
 import { cn } from "@/lib/utils";
 import {
@@ -45,10 +46,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">V</span>
-            </div>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <Image
+              src="/images/logo-mark.webp"
+              alt="VidaFlow logo"
+              width={44}
+              height={44}
+              className="w-10 h-10 rounded-full object-cover ring-1 ring-emerald-100 group-hover:ring-emerald-200 transition-all"
+              priority
+            />
             <span className="text-xl font-semibold text-stone-900 tracking-tight">
               Vida<span className="text-emerald-700">Flow</span>
             </span>
