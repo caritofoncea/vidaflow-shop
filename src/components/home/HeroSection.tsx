@@ -119,51 +119,57 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* RIGHT — product collage */}
+          {/* RIGHT — lifestyle hero visual */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.15 }}
             className="relative"
           >
-            <div className="relative mx-auto max-w-md lg:max-w-none aspect-square">
-              {/* soft backdrop blob */}
-              <div className="absolute inset-4 rounded-[3rem] bg-gradient-to-br from-emerald-200/50 via-emerald-100/40 to-amber-50/60" />
+            <div className="relative mx-auto max-w-md lg:max-w-none">
+              {/* soft backdrop glow */}
+              <div className="absolute -inset-3 sm:-inset-5 rounded-[3rem] bg-gradient-to-br from-emerald-200/50 via-emerald-100/40 to-amber-50/60" />
 
-              {/* Main image */}
+              {/* Primary image with gentle float */}
               <motion.div
-                animate={{ y: [-6, 6, -6] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-2 left-2 w-[62%] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-900/15 ring-4 ring-white"
-              >
-                <Image src="/images/products/flora-liv.webp" alt="Flora Liv wellness drink" fill className="object-contain bg-white" priority sizes="40vw" />
-              </motion.div>
-
-              {/* Secondary top-right */}
-              <motion.div
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-10 right-2 w-[42%] aspect-square rounded-3xl overflow-hidden shadow-xl shadow-emerald-900/10 ring-4 ring-white"
-              >
-                <Image src="/images/products/vita-xtra-t.webp" alt="Vita Xtra T+ antioxidant drink" fill className="object-contain bg-white" sizes="30vw" />
-              </motion.div>
-
-              {/* Bottom-right */}
-              <motion.div
-                animate={{ y: [-4, 8, -4] }}
+                animate={{ y: [-7, 7, -7] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-3 right-6 w-[48%] aspect-[5/4] rounded-3xl overflow-hidden shadow-xl shadow-emerald-900/10 ring-4 ring-white"
+                className="relative rounded-[2.25rem] overflow-hidden shadow-2xl shadow-emerald-900/20 ring-4 ring-white aspect-[4/3] sm:aspect-[3/2] lg:aspect-[5/6]"
               >
-                <Image src="/images/products/obalance.webp" alt="Alpha Balance green drink" fill className="object-contain bg-white" sizes="34vw" />
+                <Image
+                  src="/images/hero/hero-main.jpg"
+                  alt={
+                    locale === "es"
+                      ? "Mujer disfrutando un estilo de vida saludable en casa"
+                      : "Woman enjoying a healthy lifestyle at home"
+                  }
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 90vw, 45vw"
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
               </motion.div>
 
               {/* Floating chips */}
-              <div className="absolute bottom-6 left-0 px-4 py-2 rounded-2xl bg-white/95 backdrop-blur-sm shadow-lg flex items-center gap-2">
+              <motion.div
+                animate={{ y: [4, -4, 4] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-5 -left-2 sm:left-4 px-4 py-2.5 rounded-2xl bg-white/95 backdrop-blur-sm shadow-lg flex items-center gap-2"
+              >
                 <Leaf className="w-4 h-4 text-emerald-600" />
+                <span className="text-sm font-semibold text-stone-700">100% Natural</span>
+              </motion.div>
+              <motion.div
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-5 -right-2 sm:right-4 px-4 py-2.5 rounded-2xl bg-white/95 backdrop-blur-sm shadow-lg flex items-center gap-2"
+              >
+                <Sparkles className="w-4 h-4 text-amber-500" />
                 <span className="text-sm font-semibold text-stone-700">
-                  {locale === "es" ? "100% Natural" : "100% Natural"}
+                  {locale === "es" ? "Bienestar diario" : "Daily wellness"}
                 </span>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>

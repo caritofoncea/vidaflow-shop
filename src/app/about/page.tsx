@@ -14,12 +14,6 @@ const valueGradients = [
   "from-blue-400 to-cyan-600",
 ];
 
-const collage = [
-  "/images/products/flora-liv.webp",
-  "/images/products/beauty-in.webp",
-  "/images/products/vita-xtra-t.webp",
-];
-
 export default function AboutPage() {
   const { t, locale, whatsappLink } = useI18n();
 
@@ -56,17 +50,27 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* Product collage */}
-            <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.15 }} className="relative mx-auto max-w-md lg:max-w-none aspect-square w-full">
-              <div className="absolute inset-6 rounded-[3rem] bg-gradient-to-br from-emerald-200/40 via-emerald-100/30 to-amber-50/50" />
-              <div className="absolute top-0 left-2 w-[60%] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-4 ring-white bg-white">
-                <Image src={collage[0]} alt="VidaFlow product" fill className="object-contain" sizes="40vw" />
-              </div>
-              <div className="absolute top-12 right-0 w-[44%] aspect-square rounded-3xl overflow-hidden shadow-xl ring-4 ring-white bg-white">
-                <Image src={collage[1]} alt="VidaFlow product" fill className="object-contain" sizes="30vw" />
-              </div>
-              <div className="absolute bottom-0 right-8 w-[48%] aspect-[5/4] rounded-3xl overflow-hidden shadow-xl ring-4 ring-white bg-white">
-                <Image src={collage[2]} alt="VidaFlow product" fill className="object-contain" sizes="34vw" />
+            {/* Wellness lifestyle flat lay */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.15 }}
+              className="relative mx-auto max-w-md lg:max-w-none w-full"
+            >
+              <div className="absolute -inset-3 sm:-inset-5 rounded-[3rem] bg-gradient-to-br from-emerald-200/40 via-emerald-100/30 to-amber-50/50" />
+              <div className="relative rounded-[2.25rem] overflow-hidden shadow-2xl shadow-emerald-900/15 ring-4 ring-white aspect-[4/3]">
+                <Image
+                  src="/images/about/about-vidaflow.jpg"
+                  alt={
+                    locale === "es"
+                      ? "Estilo de vida saludable: bebida verde, frutas frescas e ingredientes naturales"
+                      : "Healthy lifestyle flat lay: green drink, fresh fruit, and natural ingredients"
+                  }
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 90vw, 45vw"
+                  className="object-cover"
+                />
               </div>
             </motion.div>
           </div>

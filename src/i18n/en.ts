@@ -43,36 +43,26 @@ export const en = {
   },
   benefits: {
     title: "Wellness Made Simple",
-    subtitle: "Pick a goal and we'll match you with an easy daily routine — no guesswork, just a tasty drink a day.",
+    subtitle: "Pick a goal and we'll help you build an easy daily routine — one tasty drink at a time.",
     energy: {
-      title: "All-Day Energy",
+      title: "Energy",
       description:
-        "A natural morning boost that helps you stay active and focused — minus the afternoon slump.",
+        "Natural support to feel awake, focused, and ready for a busy day.",
     },
     digestion: {
-      title: "Happy Digestion",
+      title: "Digestion",
       description:
-        "Gentle daily fiber and probiotics to help your tummy feel light, regular, and comfortable.",
+        "Daily fiber and probiotics to help you feel light and comfortable.",
     },
-    weight: {
-      title: "Weight & Shape",
+    beauty: {
+      title: "Beauty & Skin",
       description:
-        "Simple support for managing your weight and measurements alongside good food and movement.",
+        "Collagen and antioxidants to support healthy-looking skin, hair, and glow.",
     },
-    immune: {
-      title: "Daily Defenses",
+    balance: {
+      title: "Stress & Sleep",
       description:
-        "Antioxidant-rich drinks that help support your body's natural defenses all year round.",
-    },
-    clarity: {
-      title: "Focus & Calm",
-      description:
-        "Stay sharp when you need it and unwind when you don't — support for focus by day and calm by night.",
-    },
-    aging: {
-      title: "Beauty & Glow",
-      description:
-        "Collagen and antioxidant support to help your skin, hair, and natural glow look their best.",
+        "Calming botanicals to help you unwind, manage everyday stress, and rest well.",
     },
   },
   categories: {
@@ -142,33 +132,15 @@ export const en = {
     shopNow: "Shop Now",
   },
   testimonials: {
-    title: "Loved by Busy People",
-    subtitle: "Real stories from our community across the Americas.",
-    items: [
-      {
-        name: "Sarah M.",
-        location: "Austin, TX",
-        text: "My morning drink completely changed how I start the day. I feel naturally awake and focused — without three cups of coffee.",
-        rating: 5,
-      },
-      {
-        name: "Carlos R.",
-        location: "Guatemala City",
-        text: "VidaFlow makes wellness easy. Two minutes a day and I feel lighter and more on top of things — and they helped me pick the right routine on WhatsApp.",
-        rating: 5,
-      },
-      {
-        name: "Jennifer L.",
-        location: "Miami, FL",
-        text: "Adding a simple cleanse-and-beauty routine has me feeling fresher and more confident in my own skin day to day.",
-        rating: 5,
-      },
-      {
-        name: "Marco A.",
-        location: "Antigua Guatemala",
-        text: "As a busy entrepreneur, my daily VidaFlow drinks keep me energized and steady even on my craziest days.",
-        rating: 5,
-      },
+    eyebrow: "Trust & Transparency",
+    title: "Real customer stories — coming soon",
+    subtitle: "VidaFlow is a growing wellness community across Guatemala and the United States. As real customers share their honest experiences, we'll feature them right here.",
+    cta: "Tried VidaFlow? Share your story",
+    points: [
+      { title: "Secure Fuxion checkout", description: "Every order is processed through Fuxion's official, secure store." },
+      { title: "Personal WhatsApp guidance", description: "Real people help you choose what fits your goals — before and after you buy." },
+      { title: "Available in GT & USA", description: "Shop in Guatemala (Q) or the United States ($) with local pricing." },
+      { title: "Honest, no over-promises", description: "We share what our products are designed to support — never miracle claims." },
     ],
   },
   whyVidaFlow: {
@@ -215,7 +187,7 @@ export const en = {
       {
         question: "What are VidaFlow products made from?",
         answer:
-          "VidaFlow products are crafted with premium, naturally-sourced ingredients. Each formula combines clinically studied compounds, botanical extracts, vitamins, and minerals for maximum effectiveness.",
+          "VidaFlow products are crafted with premium, naturally-sourced ingredients. Each formula combines botanical extracts, vitamins, and minerals chosen to support your everyday wellbeing.",
       },
       {
         question: "Are VidaFlow products safe to use daily?",
@@ -225,12 +197,12 @@ export const en = {
       {
         question: "How long before I see results?",
         answer:
-          "Most customers report feeling a difference within the first 1–2 weeks. For optimal results, we recommend consistent daily use for at least 30 days, as nutritional benefits build over time.",
+          "Everyone is different, so experiences vary from person to person. Because nutrition works gradually, we suggest enjoying your routine consistently for at least 30 days alongside balanced meals, movement, and good sleep.",
       },
       {
         question: "Can I take multiple VidaFlow products together?",
         answer:
-          "Absolutely. Our products are designed to complement each other. Many customers combine Energy+ with Daily Essentials for comprehensive daily nutrition and performance.",
+          "Yes. Our products are designed to complement each other — for example, an energy drink in the morning and a calming drink at night. Message us on WhatsApp and we'll suggest a simple routine for your goals.",
       },
       {
         question: "How do I order VidaFlow products?",
@@ -326,7 +298,7 @@ export const en = {
     philosophyP1:
       "We believe wellness is not a destination — it's a flow. It's the daily choices, the small habits, and the consistent commitment to treating your body with respect.",
     philosophyP2:
-      "That's why every VidaFlow product is designed to integrate seamlessly into your life — delicious, easy to prepare, and backed by real science. We don't believe in quick fixes. We believe in lasting transformation.",
+      "That's why every VidaFlow product is designed to integrate seamlessly into your life — delicious, easy to prepare, and backed by real science. We don't believe in quick fixes — we believe in small, consistent habits that add up over time.",
     values: [
       { title: "Quality First", description: "No compromises on ingredients or manufacturing standards." },
       { title: "Science-Backed", description: "Every formula is grounded in clinical research and nutritional science." },

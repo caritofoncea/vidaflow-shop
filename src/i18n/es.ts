@@ -45,36 +45,26 @@ export const es: TranslationKeys = {
   },
   benefits: {
     title: "Bienestar Hecho Simple",
-    subtitle: "Elige una meta y te armamos una rutina diaria fácil — sin complicaciones, solo una rica bebida al día.",
+    subtitle: "Elige una meta y te ayudamos a armar una rutina diaria fácil — una rica bebida a la vez.",
     energy: {
-      title: "Energía Todo el Día",
+      title: "Energía",
       description:
-        "Un impulso natural por la mañana que te ayuda a mantenerte activo y enfocado, sin el bajón de la tarde.",
+        "Apoyo natural para sentirte despierta, enfocada y lista para un día ocupado.",
     },
     digestion: {
-      title: "Digestión Feliz",
+      title: "Digestión",
       description:
-        "Fibra y probióticos diarios para ayudar a que tu pancita se sienta ligera, regular y cómoda.",
+        "Fibra y probióticos diarios para ayudarte a sentir ligereza y comodidad.",
     },
-    weight: {
-      title: "Peso y Figura",
+    beauty: {
+      title: "Belleza y Piel",
       description:
-        "Apoyo simple para manejar tu peso y medidas, junto a una buena alimentación y movimiento.",
+        "Colágeno y antioxidantes para apoyar una piel, cabello y brillo saludables.",
     },
-    immune: {
-      title: "Defensas Diarias",
+    balance: {
+      title: "Estrés y Sueño",
       description:
-        "Bebidas ricas en antioxidantes que ayudan a apoyar las defensas naturales de tu cuerpo todo el año.",
-    },
-    clarity: {
-      title: "Enfoque y Calma",
-      description:
-        "Mantente alerta cuando lo necesitas y relájate cuando no — apoyo para el enfoque de día y la calma de noche.",
-    },
-    aging: {
-      title: "Belleza y Glow",
-      description:
-        "Apoyo de colágeno y antioxidantes para ayudar a que tu piel, cabello y brillo natural luzcan al máximo.",
+        "Botánicos calmantes para ayudarte a relajarte, manejar el estrés y descansar mejor.",
     },
   },
   categories: {
@@ -144,33 +134,15 @@ export const es: TranslationKeys = {
     shopNow: "Comprar Ahora",
   },
   testimonials: {
-    title: "Amado por Gente Ocupada",
-    subtitle: "Historias reales de nuestra comunidad en toda América.",
-    items: [
-      {
-        name: "Sarah M.",
-        location: "Austin, TX",
-        text: "Mi bebida de la mañana cambió por completo cómo empiezo el día. Me siento naturalmente despierta y enfocada, sin tres tazas de café.",
-        rating: 5,
-      },
-      {
-        name: "Carlos R.",
-        location: "Ciudad de Guatemala",
-        text: "VidaFlow hace que el bienestar sea fácil. Dos minutos al día y me siento más ligero y al control — y me ayudaron a elegir mi rutina por WhatsApp.",
-        rating: 5,
-      },
-      {
-        name: "Jennifer L.",
-        location: "Miami, FL",
-        text: "Sumar una rutina simple de limpieza y belleza me tiene sintiéndome más fresca y segura en mi propia piel cada día.",
-        rating: 5,
-      },
-      {
-        name: "Marco A.",
-        location: "Antigua Guatemala",
-        text: "Como emprendedor ocupado, mis bebidas diarias de VidaFlow me mantienen con energía y estable incluso en mis días más locos.",
-        rating: 5,
-      },
+    eyebrow: "Confianza y Transparencia",
+    title: "Historias reales de clientes — próximamente",
+    subtitle: "VidaFlow es una comunidad de bienestar en crecimiento en Guatemala y Estados Unidos. A medida que clientes reales compartan sus experiencias honestas, las destacaremos aquí.",
+    cta: "¿Probaste VidaFlow? Comparte tu historia",
+    points: [
+      { title: "Pago seguro con Fuxion", description: "Cada pedido se procesa a través de la tienda oficial y segura de Fuxion." },
+      { title: "Acompañamiento por WhatsApp", description: "Personas reales te ayudan a elegir lo que se ajusta a tus metas, antes y después de comprar." },
+      { title: "Disponible en GT y EE. UU.", description: "Compra en Guatemala (Q) o Estados Unidos ($) con precios locales." },
+      { title: "Honestos, sin promesas exageradas", description: "Compartimos lo que nuestros productos buscan apoyar — nunca promesas milagrosas." },
     ],
   },
   whyVidaFlow: {
@@ -217,7 +189,7 @@ export const es: TranslationKeys = {
       {
         question: "¿De qué están hechos los productos VidaFlow?",
         answer:
-          "Los productos VidaFlow están elaborados con ingredientes premium de origen natural. Cada fórmula combina compuestos clínicamente estudiados, extractos botánicos, vitaminas y minerales para máxima efectividad.",
+          "Los productos VidaFlow están elaborados con ingredientes premium de origen natural. Cada fórmula combina extractos botánicos, vitaminas y minerales elegidos para apoyar tu bienestar diario.",
       },
       {
         question: "¿Es seguro usar los productos VidaFlow a diario?",
@@ -227,12 +199,12 @@ export const es: TranslationKeys = {
       {
         question: "¿Cuánto tiempo antes de ver resultados?",
         answer:
-          "La mayoría de los clientes reportan sentir una diferencia dentro de las primeras 1-2 semanas. Para resultados óptimos, recomendamos uso diario consistente por al menos 30 días, ya que los beneficios nutricionales se acumulan con el tiempo.",
+          "Cada persona es diferente, así que las experiencias varían de una a otra. Como la nutrición actúa de forma gradual, sugerimos disfrutar tu rutina de forma constante por al menos 30 días, junto a una alimentación balanceada, movimiento y buen descanso.",
       },
       {
         question: "¿Puedo tomar múltiples productos VidaFlow juntos?",
         answer:
-          "¡Por supuesto! Nuestros productos están diseñados para complementarse entre sí. Muchos clientes combinan Energy+ con Daily Essentials para nutrición y rendimiento diario integral.",
+          "Sí. Nuestros productos están diseñados para complementarse entre sí — por ejemplo, una bebida de energía en la mañana y una bebida calmante en la noche. Escríbenos por WhatsApp y te sugerimos una rutina simple para tus metas.",
       },
       {
         question: "¿Cómo pido productos VidaFlow?",
@@ -328,7 +300,7 @@ export const es: TranslationKeys = {
     philosophyP1:
       "Creemos que el bienestar no es un destino — es un flujo. Son las decisiones diarias, los pequeños hábitos y el compromiso consistente de tratar tu cuerpo con respeto.",
     philosophyP2:
-      "Por eso cada producto VidaFlow está diseñado para integrarse perfectamente en tu vida — delicioso, fácil de preparar y respaldado por ciencia real. No creemos en soluciones rápidas. Creemos en transformación duradera.",
+      "Por eso cada producto VidaFlow está diseñado para integrarse perfectamente en tu vida — delicioso, fácil de preparar y respaldado por ciencia real. No creemos en soluciones rápidas — creemos en hábitos pequeños y constantes que suman con el tiempo.",
     values: [
       { title: "Calidad Primero", description: "Sin compromisos en ingredientes o estándares de fabricación." },
       { title: "Respaldado por la Ciencia", description: "Cada fórmula está fundamentada en investigación clínica y ciencia nutricional." },
