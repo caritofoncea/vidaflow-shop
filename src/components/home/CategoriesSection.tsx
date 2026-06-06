@@ -2,6 +2,7 @@
 
 import { useI18n } from "@/i18n";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Sparkles,
   Shield,
@@ -13,13 +14,14 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+// Each card pairs a goal with a representative catalog-uploads product image.
 const categoryData = [
-  { key: "antiAge" as const, icon: Sparkles, gradient: "from-rose-500 to-pink-600" },
-  { key: "immune" as const, icon: Shield, gradient: "from-blue-500 to-cyan-600" },
-  { key: "detox" as const, icon: Leaf, gradient: "from-lime-500 to-green-600" },
-  { key: "weightManagement" as const, icon: Scale, gradient: "from-emerald-500 to-teal-600" },
-  { key: "mentalPerformance" as const, icon: Brain, gradient: "from-violet-500 to-purple-600" },
-  { key: "otherSolutions" as const, icon: Sun, gradient: "from-amber-500 to-orange-600" },
+  { key: "detox" as const, icon: Leaf, gradient: "from-lime-500 to-green-600", href: "/products?category=cleansing", image: "/images/products/flora-liv.webp", tint: "from-lime-50 to-emerald-50" },
+  { key: "weightManagement" as const, icon: Scale, gradient: "from-rose-500 to-pink-600", href: "/products?category=weight", image: "/images/products/thermo-t3.webp", tint: "from-rose-50 to-pink-50" },
+  { key: "antiAge" as const, icon: Sparkles, gradient: "from-violet-500 to-purple-600", href: "/products?category=antiage", image: "/images/products/beauty-in.webp", tint: "from-violet-50 to-fuchsia-50" },
+  { key: "immune" as const, icon: Shield, gradient: "from-blue-500 to-cyan-600", href: "/products?category=immune", image: "/images/products/vera-plus.webp", tint: "from-blue-50 to-cyan-50" },
+  { key: "mentalPerformance" as const, icon: Brain, gradient: "from-indigo-500 to-blue-600", href: "/products?category=mental", image: "/images/products/on.webp", tint: "from-indigo-50 to-blue-50" },
+  { key: "otherSolutions" as const, icon: Sun, gradient: "from-amber-500 to-orange-600", href: "/products?category=energy", image: "/images/products/vita-xtra-t.webp", tint: "from-amber-50 to-orange-50" },
 ];
 
 export default function CategoriesSection() {
@@ -34,6 +36,9 @@ export default function CategoriesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
+          <p className="text-xs font-semibold tracking-[0.2em] text-emerald-700 mb-3 uppercase">
+            {t.nav.products}
+          </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mb-4">
             {t.categories.title}
           </h2>
@@ -52,27 +57,41 @@ export default function CategoriesSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
               >
                 <Link
-                  href="/products"
-                  className="group block p-8 rounded-3xl bg-white border border-stone-100 hover:border-stone-200 transition-all duration-300 hover:shadow-xl hover:shadow-stone-200/50 hover:-translate-y-1"
+                  href={cat.href}
+                  className="group flex flex-col h-full rounded-3xl bg-white border border-stone-100 overflow-hidden hover:border-stone-200 transition-all duration-300 hover:shadow-xl hover:shadow-stone-200/50 hover:-translate-y-1"
                 >
-                  <div
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform`}
-                  >
-                    <Icon className="w-6 h-6 text-white" />
+                  {/* Image header */}
+                  <div className={`relative h-44 bg-gradient-to-br ${cat.tint} overflow-hidden`}>
+                    <Image
+                      src={cat.image}
+                      alt={content.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div
+                      className={`absolute top-4 left-4 w-11 h-11 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center shadow-lg`}
+                    >
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-stone-900 mb-2">
-                    {content.title}
-                  </h3>
-                  <p className="text-stone-500 leading-relaxed mb-4">
-                    {content.description}
-                  </p>
-                  <span className="inline-flex items-center gap-1 text-emerald-700 font-medium text-sm group-hover:gap-2 transition-all">
-                    {t.categories.learnMore}
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
+
+                  {/* Body */}
+                  <div className="flex flex-col flex-1 p-6">
+                    <h3 className="text-xl font-semibold text-stone-900 mb-2">
+                      {content.title}
+                    </h3>
+                    <p className="text-stone-500 leading-relaxed mb-4 text-sm flex-1">
+                      {content.description}
+                    </p>
+                    <span className="inline-flex items-center gap-1 text-emerald-700 font-semibold text-sm group-hover:gap-2 transition-all">
+                      {t.categories.learnMore}
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
                 </Link>
               </motion.div>
             );

@@ -1,19 +1,23 @@
 // =============================================================================
-// Product Image Mapping — REAL FUXION CATALOG IMAGES
+// Product Image Mapping — REAL VIDAFLOW / FUXION CATALOG IMAGES
 // Location: src/lib/product-images.ts
 //
-// All images are cropped from the official Fuxion product photography
-// (beverage-hero compositions with the product box as a credibility element),
-// stored locally in /public/images/products/.
+// Each image is the official portrait marketing infographic for the product
+// (brand header + product name + slogan + benefits + product boxes), generated
+// from /catalog-uploads via scripts/gen_product_images.py and stored at
+// /public/images/products/{slug}.webp (≈1000px tall, WebP).
+//
+// IMPORTANT: these are PORTRAIT infographics — display them with
+// `object-contain` (never crop) on a light/white background.
 //
 // IMAGE SOURCE STATUS:
-//   ✓ DIRECT  = product has its own dedicated catalog photo
-//   ↳ FAMILY  = product reuses the closest same-color/same-flavor catalog drink
-//               (these can be replaced with a dedicated photo later)
+//   ✓ DIRECT  = product has its own dedicated catalog infographic
+//   ↳ FAMILY  = no dedicated art yet; reuses the closest same-line sibling
+//               (drop a {slug}.webp here later to give it its own image)
 //
 // HOW TO REPLACE / ADD A DEDICATED IMAGE:
-//   1. Drop an 800px-wide WebP at /public/images/products/{slug}.webp
-//   2. Point the slug below at "/images/products/{slug}.webp"
+//   1. Drop a portrait WebP at /public/images/products/{slug}.webp
+//   2. Point the slug below at "/images/products/{slug}.webp" (mark ✓ DIRECT)
 //   3. Rebuild. That's it.
 // =============================================================================
 
@@ -21,89 +25,110 @@ const P = "/images/products";
 
 export const productImages: Record<string, string> = {
   // ── CLEANSING / DETOX ──────────────────────────────────────────
-  "flora-liv": `${P}/flora-liv.webp`,        // ✓ DIRECT — golden passion fruit drink
-  "liquid-fiber": `${P}/liquid-fiber.webp`,  // ✓ DIRECT — lemon drink
-  "prunex1": `${P}/prunex1.webp`,            // ✓ DIRECT — prune herbal tea
-  "obalance": `${P}/obalance.webp`,          // ✓ DIRECT — green apple chlorophyll (Alpha Balance)
-  "berry-balance": `${P}/berry-balance.webp`,// ✓ DIRECT — red cranberry berry drink
-  "rexet": `${P}/rexet.webp`,                // ✓ DIRECT — amber prickly pear tea
-  "probix": `${P}/probix.webp`,              // ✓ DIRECT — red postbiotic berry drink
+  "flora-liv": `${P}/flora-liv.webp`,        // ✓ DIRECT
+  "liquid-fiber": `${P}/liquid-fiber.webp`,  // ✓ DIRECT
+  "prunex1": `${P}/prunex1.webp`,            // ✓ DIRECT
+  "obalance": `${P}/obalance.webp`,          // ✓ DIRECT — Alpha Balance
+  "berry-balance": `${P}/berry-balance.webp`,// ✓ DIRECT
+  "rexet": `${P}/rexet.webp`,                // ✓ DIRECT
+  "probix": `${P}/probix.webp`,              // ✓ DIRECT
 
   // ── NUTRITION & REGENERATION ───────────────────────────────────
-  "biopro-tect": `${P}/biopro-tect.webp`,    // ✓ DIRECT — vanilla protein shake
-  "protein-active": `${P}/protein-active.webp`, // ✓ DIRECT — chocolate protein shake
+  "biopro-tect": `${P}/biopro-tect.webp`,    // ✓ DIRECT
+  "protein-active": `${P}/protein-active.webp`, // ✓ DIRECT — Chocolate & Hazelnut
 
   // ── ENERGY & REVITALIZATION ────────────────────────────────────
-  "vita-xtra-t": `${P}/vita-xtra-t.webp`,    // ✓ DIRECT — purple superfruit drink
-  "nutraday": `${P}/berry-balance.webp`,     // ↳ FAMILY — strawberry → red berry drink
+  "vita-xtra-t": `${P}/vita-xtra-t.webp`,    // ✓ DIRECT
+  "nutraday": `${P}/nutraday.webp`,          // ✓ DIRECT
 
   // ── IMMUNE SUPPORT ─────────────────────────────────────────────
-  "vera-plus": `${P}/obalance.webp`,         // ↳ FAMILY — mint → green drink
-  "ganomas-cappuccino": `${P}/chocolate-fit.webp`, // ↳ FAMILY — reishi coffee → brown drink
+  "vera-plus": `${P}/vera-plus.webp`,        // ✓ DIRECT
+  "ganomas-cappuccino": `${P}/ganomas-cappuccino.webp`, // ✓ DIRECT
 
   // ── WEIGHT MANAGEMENT ──────────────────────────────────────────
-  "thermo-t3": `${P}/thermo-t3.webp`,        // ✓ DIRECT — green lemon tea
-  "nocarb-t": `${P}/prunex1.webp`,           // ↳ FAMILY — apple cinnamon → amber tea
-  "cafe-fit": `${P}/chocolate-fit.webp`,     // ↳ FAMILY — coffee → brown drink
-  "cafe-fit-cappuccino": `${P}/chocolate-fit.webp`, // ↳ FAMILY — cappuccino → brown drink
-  "chocolate-fit": `${P}/chocolate-fit.webp`,// ✓ DIRECT — dark chocolate drink
-  "biopro-fit": `${P}/biopro-fit.webp`,      // ✓ DIRECT — vanilla protein shake
-  "protein-active-fit": `${P}/protein-active-fit.webp`, // ✓ DIRECT — vanilla protein shake
+  "thermo-t3": `${P}/thermo-t3.webp`,        // ✓ DIRECT
+  "nocarb-t": `${P}/nocarb-t.webp`,          // ✓ DIRECT
+  "cafe-fit": `${P}/cafe-fit.webp`,          // ✓ DIRECT
+  "cafe-fit-cappuccino": `${P}/cafe-fit-cappuccino.webp`, // ✓ DIRECT
+  "chocolate-fit": `${P}/cafe-fit.webp`,     // ↳ FAMILY — no solo art; reuses Café Fit
+  "biopro-fit": `${P}/biopro-fit.webp`,      // ✓ DIRECT
+  "protein-active-fit": `${P}/protein-active-fit.webp`, // ✓ DIRECT — Chocolate & Hazelnut
 
   // ── ANTI-AGE ───────────────────────────────────────────────────
-  "probal": `${P}/probal.webp`,              // ✓ DIRECT — green herbal tea
-  "passion": `${P}/on.webp`,                 // ↳ FAMILY — guarana → red energizing drink
-  "youth-elixir": `${P}/vita-xtra-t.webp`,   // ↳ FAMILY — grape wine → purple drink
-  "golden-flx": `${P}/flora-liv.webp`,       // ↳ FAMILY — golden milk → golden drink
-  "beauty-in": `${P}/berry-balance.webp`,    // ↳ FAMILY — exotic fruit → pink/red drink
+  "probal": `${P}/probal.webp`,              // ✓ DIRECT
+  "passion": `${P}/passion.webp`,            // ✓ DIRECT
+  "youth-elixir": `${P}/youth-elixir.webp`,  // ✓ DIRECT
+  "golden-flx": `${P}/golden-flx.webp`,      // ✓ DIRECT
+  "beauty-in": `${P}/beauty-in.webp`,        // ✓ DIRECT
 
   // ── MENTAL STAMINA ─────────────────────────────────────────────
-  "on": `${P}/on.webp`,                      // ✓ DIRECT — red mixed fruits drink
-  "off": `${P}/no-stress.webp`,              // ↳ FAMILY — peach calm → herbal tea
-  "no-stress": `${P}/no-stress.webp`,        // ✓ DIRECT — chamomile herbal tea
+  "on": `${P}/on.webp`,                      // ✓ DIRECT
+  "off": `${P}/on.webp`,                     // ↳ FAMILY — no solo art; reuses ON
+  "no-stress": `${P}/no-stress.webp`,        // ✓ DIRECT
 
   // ── SPORT PERFORMANCE ──────────────────────────────────────────
-  "pre-sport": `${P}/on.webp`,               // ↳ FAMILY — watermelon → red drink
-  "xtra-mile": `${P}/flora-liv.webp`,        // ↳ FAMILY — orange → golden drink
-  "post-sport": `${P}/on.webp`,              // ↳ FAMILY — pomegranate → red drink
-  "biopro-sport": `${P}/biopro-tect.webp`,   // ↳ FAMILY — vanilla protein → cream shake
-  "protein-active-sport": `${P}/protein-active-sport.webp`, // ✓ DIRECT — chocolate sport protein
+  "pre-sport": `${P}/pre-sport.webp`,        // ✓ DIRECT
+  "xtra-mile": `${P}/xtra-mile.webp`,        // ✓ DIRECT
+  "post-sport": `${P}/biopro-sport.webp`,    // ↳ FAMILY — no solo art; reuses BioPro+ Sport
+  "biopro-sport": `${P}/biopro-sport.webp`,  // ✓ DIRECT
+  "protein-active-sport": `${P}/protein-active-sport.webp`, // ✓ DIRECT — Chocolate & Hazelnut
 
   // ── COMBOS & PACKS ────────────────────────────────────────────
   "10-14-pack": `${P}/10-14-pack.webp`,                  // ✓ DIRECT
-  "pack-5-14-gt": `${P}/10-14-pack.webp`,                // ↳ FAMILY — reuses 10/14 pack tile
+  "pack-5-14-gt": `${P}/pack-5-14-gt.webp`,              // ✓ DIRECT
   "forever-young-combo": `${P}/forever-young-combo.webp`,// ✓ DIRECT
   "natural-defense-combo": `${P}/natural-defense-combo.webp`, // ✓ DIRECT
   "sport-combo": `${P}/sport-combo.webp`,                // ✓ DIRECT
   "full-power-combo": `${P}/full-power-combo.webp`,      // ✓ DIRECT
-  "vigor-combo": `${P}/full-power-combo.webp`,           // ↳ FAMILY — reuses Full Power tile
+  "vigor-combo": `${P}/vigor-combo.webp`,                // ✓ DIRECT
+  "weight-control-combo-1": `${P}/weight-control-combo-1.webp`, // ✓ DIRECT
+  "weight-control-combo-2": `${P}/weight-control-combo-2.webp`, // ✓ DIRECT
+  "weight-control-combo-4": `${P}/weight-control-combo-4.webp`, // ✓ DIRECT
+  "lifestyle-combo-1": `${P}/lifestyle-combo-1.webp`,    // ✓ DIRECT
+  "lifestyle-combo-2": `${P}/lifestyle-combo-2.webp`,    // ✓ DIRECT
+  "lifestyle-combo-3": `${P}/lifestyle-combo-3.webp`,    // ✓ DIRECT
+  "anti-age-combo-1": `${P}/anti-age-combo-1.webp`,      // ✓ DIRECT
+  "anti-age-combo-2": `${P}/anti-age-combo-2.webp`,      // ✓ DIRECT
+  "anti-age-combo-3": `${P}/anti-age-combo-3.webp`,      // ✓ DIRECT
+  "anti-age-combo-4": `${P}/anti-age-combo-4.webp`,      // ✓ DIRECT
 
   // ── SEASONAL / FATHER'S DAY ────────────────────────────────────
-  "combo-dia-del-padre-probix-nocarb": `${P}/fathers-day-tile.webp`,
-  "combo-dia-del-padre-sport": `${P}/fathers-day-tile.webp`,
-  "combo-dia-del-padre-mental": `${P}/fathers-day-tile.webp`,
-  "fathers-day-on-off": `${P}/fathers-day-tile.webp`,
-  "fathers-day-protein-sport": `${P}/fathers-day-tile.webp`,
-  "fathers-day-rexet-nocarb": `${P}/fathers-day-tile.webp`,
+  "combo-dia-del-padre-probix-nocarb": `${P}/combo-dia-del-padre-probix-nocarb.webp`, // ✓ DIRECT
+  "combo-dia-del-padre-sport": `${P}/combo-dia-del-padre-sport.webp`,   // ✓ DIRECT
+  "combo-dia-del-padre-mental": `${P}/combo-dia-del-padre-mental.webp`, // ✓ DIRECT
+  "fathers-day-on-off": `${P}/fathers-day-on-off.webp`,                 // ✓ DIRECT
+  "fathers-day-protein-sport": `${P}/fathers-day-protein-sport.webp`,   // ✓ DIRECT
+  "fathers-day-rexet-nocarb": `${P}/fathers-day-rexet-nocarb.webp`,     // ✓ DIRECT
 };
 
-// Category-based fallback — closest catalog drink per category
+// Per-country image overrides — for products whose packaging/branding differs
+// by market (e.g. Vita Xtra T+ in the US is sold as "VitaEnergía" in Guatemala).
+// All sources still come from catalog-uploads.
+export const productImagesByCountry: Record<string, Partial<Record<"US" | "GT", string>>> = {
+  "vita-xtra-t": { US: `${P}/vita-xtra-t.webp`, GT: `${P}/vita-xtra-t-gt.webp` },
+};
+
+// Category-based fallback — closest catalog infographic per category
 export const categoryFallbacks: Record<string, string> = {
   cleansing: `${P}/obalance.webp`,
   energy:    `${P}/vita-xtra-t.webp`,
   nutrition: `${P}/biopro-tect.webp`,
-  immune:    `${P}/obalance.webp`,
+  immune:    `${P}/vera-plus.webp`,
   weight:    `${P}/thermo-t3.webp`,
-  antiage:   `${P}/berry-balance.webp`,
+  antiage:   `${P}/beauty-in.webp`,
   mental:    `${P}/no-stress.webp`,
-  sport:     `${P}/protein-active-sport.webp`,
+  sport:     `${P}/pre-sport.webp`,
   combo:     `${P}/10-14-pack.webp`,
 };
 
 /**
- * Get the image URL for a product.
- * Falls back to category image if no product-specific image exists.
+ * Get the image URL for a product. Every image resolves to a catalog-uploads
+ * asset under /images/products. Pass `country` to get the market-specific
+ * picture where one exists (e.g. Guatemala VitaEnergía vs US Vita Xtra T+).
  */
-export function getProductImage(slug: string, category: string): string {
+export function getProductImage(slug: string, category: string, country?: "US" | "GT"): string {
+  if (country && productImagesByCountry[slug]?.[country]) {
+    return productImagesByCountry[slug][country] as string;
+  }
   return productImages[slug] || categoryFallbacks[category] || categoryFallbacks.cleansing;
 }

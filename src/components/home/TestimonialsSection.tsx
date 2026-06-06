@@ -1,6 +1,7 @@
 "use client";
 
 import { useI18n } from "@/i18n";
+import Image from "next/image";
 import { Star, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -16,12 +17,29 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
+          <p className="text-xs font-semibold tracking-[0.2em] text-emerald-700 mb-3 uppercase">
+            ★★★★★ {t.testimonials.subtitle}
+          </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mb-4">
             {t.testimonials.title}
           </h2>
-          <p className="text-lg text-stone-500 max-w-2xl mx-auto">
-            {t.testimonials.subtitle}
-          </p>
+          {/* Product image accents */}
+          <div className="flex items-center justify-center gap-3 mt-6">
+            {["flora-liv", "beauty-in", "vita-xtra-t", "thermo-t3", "golden-flx"].map((slug) => (
+              <div
+                key={slug}
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden bg-white ring-2 ring-white shadow-md"
+              >
+                <Image
+                  src={`/images/products/${slug}.webp`}
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">

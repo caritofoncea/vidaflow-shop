@@ -136,7 +136,7 @@ export default function HeroSection() {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-2 left-2 w-[62%] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-emerald-900/15 ring-4 ring-white"
               >
-                <Image src="/images/products/flora-liv.webp" alt="Flora Liv wellness drink" fill className="object-cover" priority sizes="40vw" />
+                <Image src="/images/products/flora-liv.webp" alt="Flora Liv wellness drink" fill className="object-contain bg-white" priority sizes="40vw" />
               </motion.div>
 
               {/* Secondary top-right */}
@@ -145,7 +145,7 @@ export default function HeroSection() {
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-10 right-2 w-[42%] aspect-square rounded-3xl overflow-hidden shadow-xl shadow-emerald-900/10 ring-4 ring-white"
               >
-                <Image src="/images/products/vita-xtra-t.webp" alt="Vita Xtra T+ antioxidant drink" fill className="object-cover" sizes="30vw" />
+                <Image src="/images/products/vita-xtra-t.webp" alt="Vita Xtra T+ antioxidant drink" fill className="object-contain bg-white" sizes="30vw" />
               </motion.div>
 
               {/* Bottom-right */}
@@ -154,7 +154,7 @@ export default function HeroSection() {
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute bottom-3 right-6 w-[48%] aspect-[5/4] rounded-3xl overflow-hidden shadow-xl shadow-emerald-900/10 ring-4 ring-white"
               >
-                <Image src="/images/products/obalance.webp" alt="Alpha Balance green drink" fill className="object-cover" sizes="34vw" />
+                <Image src="/images/products/obalance.webp" alt="Alpha Balance green drink" fill className="object-contain bg-white" sizes="34vw" />
               </motion.div>
 
               {/* Floating chips */}

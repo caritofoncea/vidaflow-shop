@@ -15,88 +15,88 @@ export const es: TranslationKeys = {
   hero: {
     headline: "Bienestar Premium para Energía, Equilibrio y Vitalidad",
     subheadline:
-      "Descubre soluciones de bienestar diseñadas para apoyar tu energía, digestión, belleza, control de peso y rendimiento diario.",
+      "Rutinas de bienestar fáciles y naturales para vidas ocupadas: deliciosas bebidas diarias que apoyan tu energía, digestión, equilibrio, belleza y rendimiento. ¿Nuevo en esto? Te ayudamos a elegir por WhatsApp.",
     shopNow: "Ver Más Vendidos",
-    findProducts: "Encuentra Mis Productos Ideales",
-    talkWhatsApp: "Hablar por WhatsApp",
+    findProducts: "Ayúdame a Elegir",
+    talkWhatsApp: "Escríbenos por WhatsApp",
     badgeAvailable: "Disponible en EE. UU. y Guatemala",
     badgeCheckout: "Pago Seguro con Fuxion",
-    badgeGuidance: "Orientación Personalizada",
+    badgeGuidance: "Acompañamiento Personal y Cercano",
     badgeSupport: "Soporte por WhatsApp",
     finderTitle: "¿No sabes por dónde empezar?",
-    finderSubtitle: "Responde unas preguntas y te recomendaremos los productos ideales para tus metas.",
-    finderCta: "Encuentra Mis Productos Ideales",
+    finderSubtitle: "Dinos tu meta —más energía, mejor digestión, equilibrio, belleza o enfoque— y te sugerimos una rutina diaria simple hecha para ti.",
+    finderCta: "Ayúdame a Elegir por WhatsApp",
     bestSellers: "Más Vendidos",
-    bestSellersSub: "Nuestros productos de bienestar más queridos.",
+    bestSellersSub: "Los favoritos que nuestra comunidad elige cada día.",
   },
   benefits: {
-    title: "Transforma Tu Bienestar",
-    subtitle: "Soluciones respaldadas por la ciencia para cada dimensión de tu salud.",
+    title: "Bienestar Hecho Simple",
+    subtitle: "Elige una meta y te armamos una rutina diaria fácil — sin complicaciones, solo una rica bebida al día.",
     energy: {
-      title: "Más Energía",
+      title: "Energía Todo el Día",
       description:
-        "Vitalidad sostenida durante todo el día sin bajones ni nerviosismo.",
+        "Un impulso natural por la mañana que te ayuda a mantenerte activo y enfocado, sin el bajón de la tarde.",
     },
     digestion: {
-      title: "Mejor Digestión",
+      title: "Digestión Feliz",
       description:
-        "Apoya tu salud intestinal con ingredientes naturales que promueven el equilibrio.",
+        "Fibra y probióticos diarios para ayudar a que tu pancita se sienta ligera, regular y cómoda.",
     },
     weight: {
-      title: "Control de Peso",
+      title: "Peso y Figura",
       description:
-        "Alcanza tu composición corporal ideal con soporte nutricional específico.",
+        "Apoyo simple para manejar tu peso y medidas, junto a una buena alimentación y movimiento.",
     },
     immune: {
-      title: "Soporte Inmune",
+      title: "Defensas Diarias",
       description:
-        "Fortalece las defensas naturales de tu cuerpo con poderosos antioxidantes.",
+        "Bebidas ricas en antioxidantes que ayudan a apoyar las defensas naturales de tu cuerpo todo el año.",
     },
     clarity: {
-      title: "Claridad Mental",
+      title: "Enfoque y Calma",
       description:
-        "Agudiza tu enfoque y rendimiento cognitivo de forma natural.",
+        "Mantente alerta cuando lo necesitas y relájate cuando no — apoyo para el enfoque de día y la calma de noche.",
     },
     aging: {
-      title: "Envejecimiento Saludable",
+      title: "Belleza y Glow",
       description:
-        "Protege tus células y promueve la longevidad con fórmulas avanzadas.",
+        "Apoyo de colágeno y antioxidantes para ayudar a que tu piel, cabello y brillo natural luzcan al máximo.",
     },
   },
   categories: {
-    title: "Explora Nuestras Soluciones",
-    subtitle: "Bienestar específico para cada necesidad.",
+    title: "Encuentra Tu Rutina",
+    subtitle: "Explora por meta y arma un ritual diario simple que se adapte a tu vida.",
     antiAge: {
-      title: "Anti-Edad",
+      title: "Belleza y Anti-Edad",
       description:
-        "Revierte el reloj con rejuvenecimiento celular y fórmulas anti-envejecimiento avanzadas.",
+        "Bebidas con colágeno y antioxidantes para apoyar una piel radiante, cabello y vitalidad juvenil.",
     },
     immune: {
       title: "Soporte Inmune",
       description:
-        "Fortalece las defensas naturales de tu cuerpo con ingredientes clínicamente estudiados.",
+        "Apoyo diario para las defensas naturales de tu cuerpo, con el poder de las plantas y los antioxidantes.",
     },
     detox: {
-      title: "Detox",
+      title: "Limpieza y Digestión",
       description:
-        "Limpia y revitaliza tu cuerpo con soporte de desintoxicación suave y efectivo.",
+        "Fibra, probióticos y verdes para ayudar a que tu digestión se sienta ligera, equilibrada y regular.",
     },
     weightManagement: {
-      title: "Control de Peso",
+      title: "Peso y Figura",
       description:
-        "Alcanza tus metas con soporte metabólico y soluciones de control de apetito.",
+        "Apoyo metabólico y de control de apetito para ayudarte a alcanzar tus metas, de forma simple.",
     },
     mentalPerformance: {
-      title: "Rendimiento Mental",
+      title: "Enfoque y Calma",
       description:
-        "Desbloquea tu máximo rendimiento cognitivo con fórmulas nootrópicas y de salud cerebral.",
+        "Bebidas para ayudarte a enfocarte y estar alerta de día, y relajarte de noche.",
     },
     otherSolutions: {
-      title: "Otras Soluciones",
+      title: "Energía y Sport",
       description:
-        "Descubre productos adicionales de bienestar adaptados a tu camino de salud único.",
+        "Apoyo de energía natural y rendimiento para días activos, entrenamientos y recuperación.",
     },
-    learnMore: "Saber Más",
+    learnMore: "Explorar",
   },
   featured: {
     title: "Los Más Vendidos",
@@ -130,31 +130,31 @@ export const es: TranslationKeys = {
     shopNow: "Comprar Ahora",
   },
   testimonials: {
-    title: "Historias Reales, Resultados Reales",
-    subtitle: "Escucha a quienes transformaron sus vidas con VidaFlow.",
+    title: "Amado por Gente Ocupada",
+    subtitle: "Historias reales de nuestra comunidad en toda América.",
     items: [
       {
         name: "Sarah M.",
         location: "Austin, TX",
-        text: "VidaFlow Energy+ cambió completamente mis mañanas. Ya no dependo de tres tazas de café — me siento naturalmente energizada y enfocada todo el día.",
+        text: "Mi bebida de la mañana cambió por completo cómo empiezo el día. Me siento naturalmente despierta y enfocada, sin tres tazas de café.",
         rating: 5,
       },
       {
         name: "Carlos R.",
         location: "Ciudad de Guatemala",
-        text: "He probado muchas marcas de bienestar, pero la calidad de VidaFlow es de otro nivel. El Slim Balance me ayudó a perder 7 kilos en tres meses sin sentirme privado.",
+        text: "VidaFlow hace que el bienestar sea fácil. Dos minutos al día y me siento más ligero y al control — y me ayudaron a elegir mi rutina por WhatsApp.",
         rating: 5,
       },
       {
         name: "Jennifer L.",
         location: "Miami, FL",
-        text: "El Pure Cleanse es suave pero efectivo. Después de mi primer mes, mi piel se aclaró y me sentí más ligera y vibrante que en años.",
+        text: "Sumar una rutina simple de limpieza y belleza me tiene sintiéndome más fresca y segura en mi propia piel cada día.",
         rating: 5,
       },
       {
         name: "Marco A.",
         location: "Antigua Guatemala",
-        text: "Como emprendedor ocupado, VidaFlow Daily Essentials me da la confianza de que estoy obteniendo todo lo que mi cuerpo necesita, incluso en mis días más locos.",
+        text: "Como emprendedor ocupado, mis bebidas diarias de VidaFlow me mantienen con energía y estable incluso en mis días más locos.",
         rating: 5,
       },
     ],
@@ -253,11 +253,11 @@ export const es: TranslationKeys = {
     ],
   },
   cta: {
-    title: "¿Listo Para Transformar Tu Vida?",
+    title: "¿Listo Para Empezar Tu Rutina?",
     subtitle:
-      "Únete a miles que han descubierto una mejor manera de sentirse, rendir y vivir. Tu camino de bienestar comienza hoy.",
-    shopNow: "Comprar Ahora",
-    orderWhatsApp: "Pedir por WhatsApp",
+      "Dinos tu meta y te ayudamos a elegir los productos correctos en minutos — directo por WhatsApp. Simple, cercano y sin presión.",
+    shopNow: "Ver Más Vendidos",
+    orderWhatsApp: "Pregúntanos por WhatsApp",
   },
   footer: {
     tagline: "Fluye Hacia Tu Mejor Vida",
@@ -281,9 +281,21 @@ export const es: TranslationKeys = {
     benefits: "Beneficios",
     ingredients: "Ingredientes",
     howToUse: "Modo de Uso",
+    details: "Detalles",
     faq: "Preguntas Frecuentes",
     backToProducts: "Volver a Productos",
     relatedProducts: "También Te Puede Gustar",
+    servingFormat: "Porción y Formato",
+    serving: "Porción",
+    sku: "SKU",
+    unitsPerBox: "Unidades por caja",
+    usage: "Uso recomendado",
+    preparation: "Preparación",
+    restrictions: "Alérgenos y restricciones",
+    flavor: "Sabor",
+    whatsInside: "Qué incluye",
+    exploreByCategory: "Explora por categoría",
+    allProducts: "Todos los productos",
   },
   about: {
     title: "Sobre VidaFlow",

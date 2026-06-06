@@ -1,20 +1,19 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { useI18n } from "@/i18n";
 import {
   getVisibleProducts,
   getSeasonalProducts,
   categoryMeta,
-  allCategories,
+  categoryGroups,
   type ProductCategory,
-  type ProductData,
 } from "@/lib/products";
 import ProductCard from "@/components/products/ProductCard";
 import {
   Search,
   MessageCircle,
-  SlidersHorizontal,
   Droplets,
   Zap,
   Sprout,
@@ -27,6 +26,7 @@ import {
   X,
   ArrowUpDown,
   CalendarDays,
+  LayoutGrid,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -45,23 +45,38 @@ const iconMap: Record<string, React.ElementType> = {
 
 type SortOption = "default" | "price-asc" | "price-desc";
 
-export default function ProductsPage() {
+function ProductsPageInner() {
   const { t, locale, country, setCountry, whatsappLink } = useI18n();
+  const searchParams = useSearchParams();
+
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<ProductCategory | "all">("all");
-  const [productLine, setProductLine] = useState<"all" | "core" | "enhancing" | "combo">("all");
   const [showSeasonal, setShowSeasonal] = useState(false);
-  const [showCombos, setShowCombos] = useState(false);
   const [sort, setSort] = useState<SortOption>("default");
-  const [filtersOpen, setFiltersOpen] = useState(false);
+
+  // Deep-link support: /products?category=cleansing
+  useEffect(() => {
+    const cat = searchParams.get("category");
+    if (cat && cat in categoryMeta) {
+      setActiveCategory(cat as ProductCategory);
+    } else if (cat === "all") {
+      setActiveCategory("all");
+    }
+  }, [searchParams]);
 
   const allProducts = useMemo(() => getVisibleProducts(country), [country]);
   const seasonalProducts = useMemo(() => getSeasonalProducts(country), [country]);
 
+  // Live count per category for the current country
+  const counts = useMemo(() => {
+    const c: Record<string, number> = {};
+    for (const p of allProducts) c[p.category] = (c[p.category] || 0) + 1;
+    return c;
+  }, [allProducts]);
+
   const filtered = useMemo(() => {
     let result = allProducts;
 
-    // Search
     if (search.trim()) {
       const q = search.toLowerCase();
       result = result.filter(
@@ -73,52 +88,31 @@ export default function ProductsPage() {
       );
     }
 
-    // Category
     if (activeCategory !== "all") {
       result = result.filter((p) => p.category === activeCategory);
     }
 
-    // Product line
-    if (productLine !== "all") {
-      result = result.filter((p) => p.productLine === productLine);
-    }
-
-    // Seasonal
     if (showSeasonal) {
       result = result.filter((p) => p.isSeasonal && p.isSeasonalActive);
     }
 
-    // Combos
-    if (showCombos) {
-      result = result.filter((p) => p.isCombo);
-    }
-
-    // Sort
-    if (sort === "price-asc") {
+    if (sort === "price-asc" || sort === "price-desc") {
       result = [...result].sort((a, b) => {
-        const pa = country === "GT" ? (a.priceGT || 0) : (a.priceUS || 0);
-        const pb = country === "GT" ? (b.priceGT || 0) : (b.priceUS || 0);
-        return pa - pb;
-      });
-    } else if (sort === "price-desc") {
-      result = [...result].sort((a, b) => {
-        const pa = country === "GT" ? (a.priceGT || 0) : (a.priceUS || 0);
-        const pb = country === "GT" ? (b.priceGT || 0) : (b.priceUS || 0);
-        return pb - pa;
+        const pa = country === "GT" ? a.priceGT || 0 : a.priceUS || 0;
+        const pb = country === "GT" ? b.priceGT || 0 : b.priceUS || 0;
+        return sort === "price-asc" ? pa - pb : pb - pa;
       });
     }
 
     return result;
-  }, [allProducts, search, activeCategory, productLine, showSeasonal, showCombos, sort, country]);
+  }, [allProducts, search, activeCategory, showSeasonal, sort, country]);
 
-  const hasActiveFilters = activeCategory !== "all" || productLine !== "all" || showSeasonal || showCombos || search.trim();
+  const hasActiveFilters = activeCategory !== "all" || showSeasonal || search.trim() !== "";
 
   function clearFilters() {
     setSearch("");
     setActiveCategory("all");
-    setProductLine("all");
     setShowSeasonal(false);
-    setShowCombos(false);
     setSort("default");
   }
 
@@ -129,12 +123,12 @@ export default function ProductsPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="text-center mb-8"
         >
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mb-3">
             {t.products.title}
           </h1>
-          <p className="text-lg text-stone-500 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-stone-500 max-w-2xl mx-auto">
             {t.products.subtitle}
           </p>
         </motion.div>
@@ -144,9 +138,9 @@ export default function ProductsPage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="flex flex-col items-center mb-10"
+          className="flex flex-col items-center mb-8"
         >
-          <p className="text-sm text-stone-500 mb-3">
+          <p className="text-xs sm:text-sm text-stone-500 mb-3 text-center px-4">
             {locale === "es"
               ? "Elige dónde quieres comprar para ver productos y precios disponibles"
               : "Choose where you want to buy to see available products and prices"}
@@ -155,164 +149,73 @@ export default function ProductsPage() {
             <button
               onClick={() => setCountry("GT")}
               className={cn(
-                "inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all",
-                country === "GT"
-                  ? "bg-emerald-600 text-white shadow-sm"
-                  : "text-stone-600 hover:bg-stone-50"
+                "inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all",
+                country === "GT" ? "bg-emerald-600 text-white shadow-sm" : "text-stone-600 hover:bg-stone-50"
               )}
             >
               <span className="text-base">🇬🇹</span>
-              {locale === "es" ? "Comprar en Guatemala" : "Buy in Guatemala"}
+              {locale === "es" ? "Guatemala" : "Guatemala"}
               <span className="text-xs opacity-80">(Q)</span>
             </button>
             <button
               onClick={() => setCountry("US")}
               className={cn(
-                "inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all",
-                country === "US"
-                  ? "bg-emerald-600 text-white shadow-sm"
-                  : "text-stone-600 hover:bg-stone-50"
+                "inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all",
+                country === "US" ? "bg-emerald-600 text-white shadow-sm" : "text-stone-600 hover:bg-stone-50"
               )}
             >
               <span className="text-base">🇺🇸</span>
-              {locale === "es" ? "Comprar en EE. UU." : "Buy in United States"}
+              {locale === "es" ? "EE. UU." : "United States"}
               <span className="text-xs opacity-80">($)</span>
             </button>
           </div>
         </motion.div>
 
-        {/* Search + Filter bar */}
-        <div className="mb-8 space-y-4">
-          {/* Search */}
-          <div className="relative max-w-xl mx-auto">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" />
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder={locale === "es" ? "Buscar productos, ingredientes..." : "Search products, ingredients..."}
-              className="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-stone-200 bg-white text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all text-sm"
-            />
-            {search && (
-              <button onClick={() => setSearch("")} className="absolute right-4 top-1/2 -translate-y-1/2">
-                <X className="w-4 h-4 text-stone-400 hover:text-stone-600" />
-              </button>
-            )}
-          </div>
-
-          {/* Filter controls */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {/* Toggle filters on mobile */}
-            <button
-              onClick={() => setFiltersOpen(!filtersOpen)}
-              className="sm:hidden inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-stone-200 text-sm font-medium text-stone-600"
-            >
-              <SlidersHorizontal className="w-4 h-4" />
-              {locale === "es" ? "Filtros" : "Filters"}
+        {/* Search */}
+        <div className="relative max-w-xl mx-auto mb-6">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder={locale === "es" ? "Buscar productos, ingredientes..." : "Search products, ingredients..."}
+            className="w-full pl-12 pr-10 py-3.5 rounded-2xl border border-stone-200 bg-white text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all text-sm"
+          />
+          {search && (
+            <button onClick={() => setSearch("")} className="absolute right-4 top-1/2 -translate-y-1/2">
+              <X className="w-4 h-4 text-stone-400 hover:text-stone-600" />
             </button>
+          )}
+        </div>
 
-            {/* Category pills - always visible on desktop */}
-            <div className={cn("flex flex-wrap justify-center gap-2", !filtersOpen && "hidden sm:flex")}>
-              <button
-                onClick={() => setActiveCategory("all")}
-                className={cn(
-                  "px-3.5 py-2 rounded-full text-sm font-medium transition-all",
-                  activeCategory === "all"
-                    ? "bg-stone-900 text-white shadow-sm"
-                    : "bg-white text-stone-600 hover:bg-stone-100 border border-stone-200"
-                )}
-              >
-                {t.products.filterAll}
-              </button>
-              {allCategories.map((key) => {
-                const meta = categoryMeta[key];
-                const Icon = iconMap[meta.icon];
-                return (
-                  <button
-                    key={key}
-                    onClick={() => setActiveCategory(activeCategory === key ? "all" : key)}
-                    className={cn(
-                      "inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium transition-all",
-                      activeCategory === key
-                        ? "bg-stone-900 text-white shadow-sm"
-                        : "bg-white text-stone-600 hover:bg-stone-100 border border-stone-200"
-                    )}
-                  >
-                    {Icon && <Icon className="w-3.5 h-3.5" />}
-                    {meta[locale]}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+        {/* ── Category browser (grouped, mobile-first) ── */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4 gap-3 flex-wrap">
+            <h2 className="text-sm font-semibold text-stone-700 uppercase tracking-wider">
+              {t.products.exploreByCategory}
+            </h2>
 
-          {/* Secondary filters */}
-          <div className={cn("flex flex-wrap justify-center gap-2", !filtersOpen && "hidden sm:flex")}>
-            {/* Product line */}
-            {(["core", "enhancing"] as const).map((line) => (
-              <button
-                key={line}
-                onClick={() => setProductLine(productLine === line ? "all" : line)}
-                className={cn(
-                  "px-3 py-1.5 rounded-full text-xs font-medium transition-all",
-                  productLine === line
-                    ? "bg-emerald-600 text-white"
-                    : "bg-white text-stone-500 hover:bg-stone-100 border border-stone-200"
-                )}
-              >
-                {line === "core"
-                  ? locale === "es" ? "Sistema Base" : "Core System"
-                  : locale === "es" ? "Líneas Especializadas" : "Enhancing Lines"}
-              </button>
-            ))}
-
-            {/* Combos */}
-            <button
-              onClick={() => setShowCombos(!showCombos)}
-              className={cn(
-                "inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all",
-                showCombos
-                  ? "bg-emerald-600 text-white"
-                  : "bg-white text-stone-500 hover:bg-stone-100 border border-stone-200"
+            {/* Sort + Seasonal + Clear */}
+            <div className="flex items-center gap-2">
+              {seasonalProducts.length > 0 && (
+                <button
+                  onClick={() => setShowSeasonal(!showSeasonal)}
+                  className={cn(
+                    "inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all",
+                    showSeasonal ? "bg-amber-500 text-white" : "bg-white text-stone-500 hover:bg-stone-100 border border-stone-200"
+                  )}
+                >
+                  <CalendarDays className="w-3 h-3" />
+                  {locale === "es" ? "Temporada" : "Seasonal"}
+                </button>
               )}
-            >
-              <Package className="w-3 h-3" />
-              {locale === "es" ? "Combos" : "Packs"}
-            </button>
-
-            {/* Seasonal */}
-            {seasonalProducts.length > 0 && (
-              <button
-                onClick={() => setShowSeasonal(!showSeasonal)}
-                className={cn(
-                  "inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all",
-                  showSeasonal
-                    ? "bg-amber-500 text-white"
-                    : "bg-white text-stone-500 hover:bg-stone-100 border border-stone-200"
-                )}
-              >
-                <CalendarDays className="w-3 h-3" />
-                {locale === "es" ? "Temporada" : "Seasonal"}
-              </button>
-            )}
-
-            {/* Sort */}
-            <div className="relative">
               <button
                 onClick={() =>
-                  setSort(
-                    sort === "default"
-                      ? "price-asc"
-                      : sort === "price-asc"
-                        ? "price-desc"
-                        : "default"
-                  )
+                  setSort(sort === "default" ? "price-asc" : sort === "price-asc" ? "price-desc" : "default")
                 }
                 className={cn(
                   "inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all",
-                  sort !== "default"
-                    ? "bg-stone-700 text-white"
-                    : "bg-white text-stone-500 hover:bg-stone-100 border border-stone-200"
+                  sort !== "default" ? "bg-stone-700 text-white" : "bg-white text-stone-500 hover:bg-stone-100 border border-stone-200"
                 )}
               >
                 <ArrowUpDown className="w-3 h-3" />
@@ -322,18 +225,85 @@ export default function ProductsPage() {
                     ? locale === "es" ? "Precio ↓" : "Price ↓"
                     : locale === "es" ? "Ordenar" : "Sort"}
               </button>
+              {hasActiveFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-rose-600 hover:bg-rose-50 border border-rose-200 transition-all"
+                >
+                  <X className="w-3 h-3" />
+                  {locale === "es" ? "Limpiar" : "Clear"}
+                </button>
+              )}
             </div>
+          </div>
 
-            {/* Clear */}
-            {hasActiveFilters && (
-              <button
-                onClick={clearFilters}
-                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-rose-600 hover:bg-rose-50 border border-rose-200 transition-all"
-              >
-                <X className="w-3 h-3" />
-                {locale === "es" ? "Limpiar" : "Clear"}
-              </button>
+          {/* "All products" chip */}
+          <button
+            onClick={() => setActiveCategory("all")}
+            className={cn(
+              "inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all mb-5 min-h-[44px]",
+              activeCategory === "all"
+                ? "bg-stone-900 text-white shadow-md"
+                : "bg-white text-stone-700 border border-stone-200 hover:border-stone-300 hover:shadow-sm"
             )}
+          >
+            <LayoutGrid className="w-4 h-4" />
+            {t.products.allProducts}
+            <span className={cn("text-xs", activeCategory === "all" ? "text-white/70" : "text-stone-400")}>
+              {allProducts.length}
+            </span>
+          </button>
+
+          {/* Groups — full grid (everything visible, nothing hidden off-screen) */}
+          <div className="space-y-6">
+            {categoryGroups.map((group) => {
+              const groupCats = group.categories.filter((c) => (counts[c] || 0) > 0);
+              if (groupCats.length === 0) return null;
+              return (
+                <div key={group.key}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[11px] font-bold text-stone-400 uppercase tracking-widest whitespace-nowrap">
+                      {group.label[locale]}
+                    </span>
+                    <span className="h-px flex-1 bg-stone-200/70" />
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                    {groupCats.map((catKey) => {
+                      const meta = categoryMeta[catKey];
+                      const Icon = iconMap[meta.icon];
+                      const isActive = activeCategory === catKey;
+                      return (
+                        <button
+                          key={catKey}
+                          onClick={() => setActiveCategory(isActive ? "all" : catKey)}
+                          className={cn(
+                            "group/cat flex items-center gap-3 p-2.5 rounded-2xl text-left transition-all min-h-[60px]",
+                            isActive
+                              ? `bg-gradient-to-br ${meta.gradient} text-white shadow-lg ring-2 ring-offset-1 ring-stone-200`
+                              : "bg-white text-stone-700 border border-stone-200 hover:border-stone-300 hover:shadow-md"
+                          )}
+                        >
+                          <span
+                            className={cn(
+                              "flex items-center justify-center w-10 h-10 rounded-xl flex-shrink-0 transition-transform group-hover/cat:scale-105",
+                              isActive ? "bg-white/20" : `bg-gradient-to-br ${meta.gradient}`
+                            )}
+                          >
+                            {Icon && <Icon className="w-5 h-5 text-white" />}
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block text-sm font-semibold leading-tight">{meta[locale]}</span>
+                            <span className={cn("block text-xs", isActive ? "text-white/75" : "text-stone-400")}>
+                              {counts[catKey] || 0} {locale === "es" ? "productos" : "products"}
+                            </span>
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -345,7 +315,7 @@ export default function ProductsPage() {
 
         {/* Product grid */}
         {filtered.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             <AnimatePresence mode="popLayout">
               {filtered.map((product, i) => (
                 <motion.div
@@ -416,5 +386,13 @@ export default function ProductsPage() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-stone-50" />}>
+      <ProductsPageInner />
+    </Suspense>
   );
 }

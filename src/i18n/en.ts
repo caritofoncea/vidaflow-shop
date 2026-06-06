@@ -13,88 +13,88 @@ export const en = {
   hero: {
     headline: "Premium Wellness for Energy, Balance & Vitality",
     subheadline:
-      "Discover wellness solutions designed to support your energy, digestion, beauty, weight management, and daily performance.",
+      "Easy, natural wellness routines for busy lives — delicious daily drinks that support your energy, digestion, balance, beauty, and everyday performance. New to this? We'll help you choose on WhatsApp.",
     shopNow: "Shop Best Sellers",
-    findProducts: "Find My Perfect Products",
-    talkWhatsApp: "Talk on WhatsApp",
+    findProducts: "Help Me Choose",
+    talkWhatsApp: "Chat with us on WhatsApp",
     badgeAvailable: "USA & Guatemala Available",
     badgeCheckout: "Secure Fuxion Checkout",
-    badgeGuidance: "Personalized Product Guidance",
+    badgeGuidance: "Friendly Personal Guidance",
     badgeSupport: "WhatsApp Support",
     finderTitle: "Not sure where to start?",
-    finderSubtitle: "Answer a few questions and we'll match you with the products made for your goals.",
-    finderCta: "Find My Perfect Products",
+    finderSubtitle: "Tell us your goal — more energy, better digestion, balance, beauty, or focus — and we'll suggest a simple daily routine made for you.",
+    finderCta: "Help Me Choose on WhatsApp",
     bestSellers: "Best Sellers",
-    bestSellersSub: "Our most-loved wellness products.",
+    bestSellersSub: "The favorites our community reaches for every day.",
   },
   benefits: {
-    title: "Transform Your Wellbeing",
-    subtitle: "Science-backed solutions for every dimension of your health.",
+    title: "Wellness Made Simple",
+    subtitle: "Pick a goal and we'll match you with an easy daily routine — no guesswork, just a tasty drink a day.",
     energy: {
-      title: "More Energy",
+      title: "All-Day Energy",
       description:
-        "Sustained vitality throughout your day without crashes or jitters.",
+        "A natural morning boost that helps you stay active and focused — minus the afternoon slump.",
     },
     digestion: {
-      title: "Better Digestion",
+      title: "Happy Digestion",
       description:
-        "Support your gut health with natural ingredients that promote balance.",
+        "Gentle daily fiber and probiotics to help your tummy feel light, regular, and comfortable.",
     },
     weight: {
-      title: "Weight Management",
+      title: "Weight & Shape",
       description:
-        "Achieve your ideal body composition with targeted nutritional support.",
+        "Simple support for managing your weight and measurements alongside good food and movement.",
     },
     immune: {
-      title: "Immune Support",
+      title: "Daily Defenses",
       description:
-        "Strengthen your body's natural defenses with powerful antioxidants.",
+        "Antioxidant-rich drinks that help support your body's natural defenses all year round.",
     },
     clarity: {
-      title: "Mental Clarity",
+      title: "Focus & Calm",
       description:
-        "Sharpen your focus and cognitive performance naturally.",
+        "Stay sharp when you need it and unwind when you don't — support for focus by day and calm by night.",
     },
     aging: {
-      title: "Healthy Aging",
+      title: "Beauty & Glow",
       description:
-        "Protect your cells and promote longevity with advanced formulas.",
+        "Collagen and antioxidant support to help your skin, hair, and natural glow look their best.",
     },
   },
   categories: {
-    title: "Explore Our Solutions",
-    subtitle: "Targeted wellness for every need.",
+    title: "Find Your Routine",
+    subtitle: "Browse by goal and build a simple daily ritual that fits your life.",
     antiAge: {
-      title: "Anti-Age",
+      title: "Beauty & Anti-Age",
       description:
-        "Turn back the clock with cellular-level rejuvenation and advanced anti-aging formulas.",
+        "Collagen and antioxidant drinks to support radiant skin, hair, and youthful vitality.",
     },
     immune: {
       title: "Immune Support",
       description:
-        "Fortify your body's natural defenses with clinically studied ingredients.",
+        "Everyday support for your body's natural defenses, powered by plants and antioxidants.",
     },
     detox: {
-      title: "Detox",
+      title: "Cleanse & Digestion",
       description:
-        "Cleanse and revitalize your body with gentle, effective detoxification support.",
+        "Fiber, probiotics, and greens to help your digestion feel light, balanced, and regular.",
     },
     weightManagement: {
-      title: "Weight Management",
+      title: "Weight & Shape",
       description:
-        "Achieve your goals with metabolic support and appetite management solutions.",
+        "Metabolism and appetite support to help you reach your goals — the simple way.",
     },
     mentalPerformance: {
-      title: "Mental Performance",
+      title: "Focus & Calm",
       description:
-        "Unlock peak cognitive function with nootropic and brain-health formulas.",
+        "Drinks to help you focus and stay alert by day, then relax and unwind by night.",
     },
     otherSolutions: {
-      title: "Other Solutions",
+      title: "Energy & Sport",
       description:
-        "Discover additional wellness products tailored to your unique health journey.",
+        "Natural energy and performance support for active days, workouts, and recovery.",
     },
-    learnMore: "Learn More",
+    learnMore: "Explore",
   },
   featured: {
     title: "Best Sellers",
@@ -128,31 +128,31 @@ export const en = {
     shopNow: "Shop Now",
   },
   testimonials: {
-    title: "Real Stories, Real Results",
-    subtitle: "Hear from people who transformed their lives with VidaFlow.",
+    title: "Loved by Busy People",
+    subtitle: "Real stories from our community across the Americas.",
     items: [
       {
         name: "Sarah M.",
         location: "Austin, TX",
-        text: "VidaFlow Energy+ completely changed my mornings. I no longer rely on three cups of coffee — I feel naturally energized and focused all day.",
+        text: "My morning drink completely changed how I start the day. I feel naturally awake and focused — without three cups of coffee.",
         rating: 5,
       },
       {
         name: "Carlos R.",
         location: "Guatemala City",
-        text: "I've tried many wellness brands, but VidaFlow's quality is on another level. The Slim Balance helped me lose 15 pounds in three months without feeling deprived.",
+        text: "VidaFlow makes wellness easy. Two minutes a day and I feel lighter and more on top of things — and they helped me pick the right routine on WhatsApp.",
         rating: 5,
       },
       {
         name: "Jennifer L.",
         location: "Miami, FL",
-        text: "The Pure Cleanse is gentle yet effective. After my first month, my skin cleared up and I felt lighter and more vibrant than I have in years.",
+        text: "Adding a simple cleanse-and-beauty routine has me feeling fresher and more confident in my own skin day to day.",
         rating: 5,
       },
       {
         name: "Marco A.",
         location: "Antigua Guatemala",
-        text: "As a busy entrepreneur, VidaFlow Daily Essentials gives me the confidence that I'm getting everything my body needs, even on my craziest days.",
+        text: "As a busy entrepreneur, my daily VidaFlow drinks keep me energized and steady even on my craziest days.",
         rating: 5,
       },
     ],
@@ -251,11 +251,11 @@ export const en = {
     ],
   },
   cta: {
-    title: "Ready to Transform Your Life?",
+    title: "Ready to Start Your Routine?",
     subtitle:
-      "Join thousands who have discovered a better way to feel, perform, and live. Your wellness journey starts today.",
-    shopNow: "Shop Now",
-    orderWhatsApp: "Order via WhatsApp",
+      "Tell us your goal and we'll help you pick the right products in minutes — right on WhatsApp. Simple, friendly, no pressure.",
+    shopNow: "Shop Best Sellers",
+    orderWhatsApp: "Ask Us on WhatsApp",
   },
   footer: {
     tagline: "Flow Into Your Best Life",
@@ -279,9 +279,21 @@ export const en = {
     benefits: "Benefits",
     ingredients: "Ingredients",
     howToUse: "How to Use",
+    details: "Details",
     faq: "FAQ",
     backToProducts: "Back to Products",
     relatedProducts: "You May Also Like",
+    servingFormat: "Serving & Format",
+    serving: "Serving",
+    sku: "SKU",
+    unitsPerBox: "Units per box",
+    usage: "Recommended use",
+    preparation: "Preparation",
+    restrictions: "Allergen & restrictions",
+    flavor: "Flavor",
+    whatsInside: "What's inside",
+    exploreByCategory: "Explore by category",
+    allProducts: "All products",
   },
   about: {
     title: "About VidaFlow",

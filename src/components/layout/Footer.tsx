@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useI18n } from "@/i18n";
-import { MessageCircle, Mail, Globe, Heart, Play, Music } from "lucide-react";
+import { MessageCircle, Mail, Heart, Play, Music } from "lucide-react";
+import { InstagramIcon, FacebookIcon } from "@/components/ui/SocialIcons";
 
 export default function Footer() {
   const { t, locale, whatsappLink } = useI18n();
@@ -48,6 +49,26 @@ export default function Footer() {
               >
                 <Play className="w-4 h-4" />
               </a>
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/vidaflowcreations/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-stone-800 hover:bg-emerald-600 flex items-center justify-center transition-colors"
+                aria-label="Instagram"
+              >
+                <InstagramIcon className="w-4 h-4" />
+              </a>
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/profile.php?id=61590530343025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-stone-800 hover:bg-emerald-600 flex items-center justify-center transition-colors"
+                aria-label="Facebook"
+              >
+                <FacebookIcon className="w-4 h-4" />
+              </a>
               {/* WhatsApp */}
               <a
                 href={whatsappLink(
@@ -63,10 +84,6 @@ export default function Footer() {
                 <MessageCircle className="w-4 h-4" />
               </a>
             </div>
-            {/* Coming soon socials */}
-            <p className="text-xs text-stone-600 mt-3">
-              Facebook & Instagram — {locale === "es" ? "Próximamente" : "Coming Soon"}
-            </p>
           </div>
 
           {/* Quick Links */}
