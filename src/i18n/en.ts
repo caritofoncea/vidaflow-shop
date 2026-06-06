@@ -27,6 +27,20 @@ export const en = {
     bestSellers: "Best Sellers",
     bestSellersSub: "The favorites our community reaches for every day.",
   },
+  quiz: {
+    title: "What would you like to improve first?",
+    subtitle: "Answer one question and we'll recommend the best VidaFlow starting point for you.",
+    recommendedPrefix: "Recommended starting point",
+    cta: "Get My Recommendation on WhatsApp",
+    browse: "Or browse these products",
+    options: [
+      { key: "energy", emoji: "⚡", label: "Energy", routine: "Energy & Performance Routine" },
+      { key: "digestion", emoji: "🌿", label: "Digestion", routine: "Digestive Wellness Routine" },
+      { key: "weight", emoji: "⚖️", label: "Weight Management & Cravings", routine: "Weight Management Routine" },
+      { key: "beauty", emoji: "✨", label: "Beauty & Skin", routine: "Beauty & Glow Routine" },
+      { key: "stress", emoji: "😌", label: "Stress & Sleep", routine: "Balance & Recovery Routine" },
+    ],
+  },
   benefits: {
     title: "Wellness Made Simple",
     subtitle: "Pick a goal and we'll match you with an easy daily routine — no guesswork, just a tasty drink a day.",

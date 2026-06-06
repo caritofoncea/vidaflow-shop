@@ -29,6 +29,20 @@ export const es: TranslationKeys = {
     bestSellers: "Más Vendidos",
     bestSellersSub: "Los favoritos que nuestra comunidad elige cada día.",
   },
+  quiz: {
+    title: "¿Qué te gustaría mejorar primero?",
+    subtitle: "Responde una pregunta y te recomendaremos el mejor punto de partida VidaFlow para ti.",
+    recommendedPrefix: "Punto de partida recomendado",
+    cta: "Recibir Mi Recomendación por WhatsApp",
+    browse: "O explora estos productos",
+    options: [
+      { key: "energy", emoji: "⚡", label: "Energía", routine: "Rutina de Energía y Rendimiento" },
+      { key: "digestion", emoji: "🌿", label: "Digestión", routine: "Rutina de Bienestar Digestivo" },
+      { key: "weight", emoji: "⚖️", label: "Control de Peso y Antojos", routine: "Rutina de Control de Peso" },
+      { key: "beauty", emoji: "✨", label: "Belleza y Piel", routine: "Rutina de Belleza y Glow" },
+      { key: "stress", emoji: "😌", label: "Estrés y Sueño", routine: "Rutina de Equilibrio y Recuperación" },
+    ],
+  },
   benefits: {
     title: "Bienestar Hecho Simple",
     subtitle: "Elige una meta y te armamos una rutina diaria fácil — sin complicaciones, solo una rica bebida al día.",

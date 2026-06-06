@@ -1,8 +1,8 @@
 "use client";
 
 import HeroSection from "@/components/home/HeroSection";
+import WellnessQuiz from "@/components/home/WellnessQuiz";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
-import ProductFinder from "@/components/home/ProductFinder";
 import BenefitsSection from "@/components/home/BenefitsSection";
 import CategoriesSection from "@/components/home/CategoriesSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -15,8 +15,8 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <WellnessQuiz />
       <FeaturedProducts />
-      <ProductFinder />
       <BenefitsSection />
       <CategoriesSection />
       <TestimonialsSection />
