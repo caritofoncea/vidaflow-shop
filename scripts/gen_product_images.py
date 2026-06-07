@@ -35,6 +35,7 @@ MAP = {
     "nocarb-t": "NoCarb T",
     "cafe-fit": "Cafe & Cafe Fit",
     "cafe-fit-cappuccino": "Cafe & Cafe Fit Cappuccino",
+    "chocolate-fit": "Chocolate Fit",
     "biopro-fit": "BioPro+ Fit",
     "protein-active-fit": "Protein Active Fit - CH",
     # anti-age
@@ -45,9 +46,11 @@ MAP = {
     "beauty-in": "Beauty-In",
     # mental
     "on": "ON",
+    "off": "OFF",
     "no-stress": "No Stress",
     # sport
     "pre-sport": "Pre Sport Pro",
+    "post-sport": "Post Sport",
     "xtra-mile": "Xtra Mile",
     "biopro-sport": "BioPro+ Sport",
     "protein-active-sport": "Protein Active Sport - CH",

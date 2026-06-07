@@ -50,7 +50,7 @@ export const productImages: Record<string, string> = {
   "nocarb-t": `${P}/nocarb-t.webp`,          // ✓ DIRECT
   "cafe-fit": `${P}/cafe-fit.webp`,          // ✓ DIRECT
   "cafe-fit-cappuccino": `${P}/cafe-fit-cappuccino.webp`, // ✓ DIRECT
-  "chocolate-fit": `${P}/cafe-fit.webp`,     // ↳ FAMILY — no solo art; reuses Café Fit
+  "chocolate-fit": `${P}/chocolate-fit.webp`,// ✓ DIRECT
   "biopro-fit": `${P}/biopro-fit.webp`,      // ✓ DIRECT
   "protein-active-fit": `${P}/protein-active-fit.webp`, // ✓ DIRECT — Chocolate & Hazelnut
 
@@ -63,13 +63,13 @@ export const productImages: Record<string, string> = {
 
   // ── MENTAL STAMINA ─────────────────────────────────────────────
   "on": `${P}/on.webp`,                      // ✓ DIRECT
-  "off": `${P}/on.webp`,                     // ↳ FAMILY — no solo art; reuses ON
+  "off": `${P}/off.webp`,                    // ✓ DIRECT
   "no-stress": `${P}/no-stress.webp`,        // ✓ DIRECT
 
   // ── SPORT PERFORMANCE ──────────────────────────────────────────
   "pre-sport": `${P}/pre-sport.webp`,        // ✓ DIRECT
   "xtra-mile": `${P}/xtra-mile.webp`,        // ✓ DIRECT
-  "post-sport": `${P}/biopro-sport.webp`,    // ↳ FAMILY — no solo art; reuses BioPro+ Sport
+  "post-sport": `${P}/post-sport.webp`,      // ✓ DIRECT
   "biopro-sport": `${P}/biopro-sport.webp`,  // ✓ DIRECT
   "protein-active-sport": `${P}/protein-active-sport.webp`, // ✓ DIRECT — Chocolate & Hazelnut
 
