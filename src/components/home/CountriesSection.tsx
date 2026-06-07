@@ -17,7 +17,7 @@ const comingSoon = [
 ];
 
 export default function CountriesSection() {
-  const { t } = useI18n();
+  const { t, localePath } = useI18n();
 
   return (
     <section className="py-24 lg:py-32 bg-stone-50">
@@ -60,7 +60,7 @@ export default function CountriesSection() {
               </span>
               <div>
                 <a
-                  href="/products"
+                  href={localePath("/products")}
                   className="inline-flex items-center gap-1 text-emerald-700 font-medium group-hover:gap-2 transition-all"
                 >
                   {t.countries.shopNow}

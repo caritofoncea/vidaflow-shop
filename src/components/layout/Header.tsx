@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { useI18n, type Locale, type Country } from "@/i18n";
 import { cn } from "@/lib/utils";
 import {
@@ -24,10 +25,20 @@ const languages: { code: Locale; flag: string; label: string }[] = [
 ];
 
 export default function Header() {
-  const { t, locale, country, setLocale, setCountry, whatsappLink } = useI18n();
+  const { t, locale, country, setCountry, whatsappLink, localePath } = useI18n();
+  const router = useRouter();
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [countryOpen, setCountryOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+
+  // Language is part of the URL (/en, /es) for SEO — switch by navigating to
+  // the same path under the other locale.
+  const switchLocale = (l: Locale) => {
+    const segments = pathname.split("/");
+    segments[1] = l;
+    router.push(segments.join("/") || `/${l}`);
+  };
 
   const navLinks = [
     { href: "/", label: t.nav.home },
@@ -46,7 +57,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
+          <Link href={localePath("/")} className="flex items-center gap-2.5 group">
             <Image
               src="/images/logo-mark.webp"
               alt="VidaFlow logo"
@@ -65,7 +76,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
+                href={localePath(link.href)}
                 className="px-3 py-2 text-sm font-medium text-stone-600 hover:text-emerald-700 rounded-lg hover:bg-emerald-50 transition-colors"
               >
                 {link.label}
@@ -118,7 +129,7 @@ export default function Header() {
                   {languages.map((l) => (
                     <button
                       key={l.code}
-                      onClick={() => { setLocale(l.code); setLangOpen(false); }}
+                      onClick={() => { switchLocale(l.code); setLangOpen(false); }}
                       className={cn(
                         "w-full flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-emerald-50 transition-colors",
                         locale === l.code ? "text-emerald-700 font-medium" : "text-stone-700"
@@ -162,7 +173,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
+                href={localePath(link.href)}
                 onClick={() => setMobileOpen(false)}
                 className="block px-4 py-3 text-base font-medium text-stone-700 hover:text-emerald-700 hover:bg-emerald-50 rounded-xl transition-colors"
               >
@@ -190,7 +201,7 @@ export default function Header() {
               {languages.map((l) => (
                 <button
                   key={l.code}
-                  onClick={() => setLocale(l.code)}
+                  onClick={() => switchLocale(l.code)}
                   className={cn(
                     "flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium border transition-colors",
                     locale === l.code

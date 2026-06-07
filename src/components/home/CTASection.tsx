@@ -6,7 +6,7 @@ import { MessageCircle, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function CTASection() {
-  const { t, locale, whatsappLink } = useI18n();
+  const { t, locale, whatsappLink, localePath } = useI18n();
 
   return (
     <section className="py-24 lg:py-32 bg-gradient-to-br from-emerald-800 via-emerald-900 to-stone-900 relative overflow-hidden">
@@ -29,7 +29,7 @@ export default function CTASection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/products"
+              href={localePath("/products")}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-stone-100 text-stone-900 text-base font-semibold rounded-full transition-all hover:shadow-xl group"
             >
               {t.cta.shopNow}

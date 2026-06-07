@@ -10,7 +10,7 @@ import { getProductDetails } from "@/lib/product-details";
 import { ExternalLink, CalendarDays, Package } from "lucide-react";
 
 export default function ProductCard({ product }: { product: ProductData }) {
-  const { locale, country } = useI18n();
+  const { locale, country, localePath } = useI18n();
   const cat = categoryMeta[product.category];
   const price = formatPrice(product, country);
   const payLink = getPaymentLink(product, country);
@@ -23,7 +23,7 @@ export default function ProductCard({ product }: { product: ProductData }) {
   return (
     <div className="group flex flex-col h-full rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-stone-100 hover:border-stone-200 transition-all duration-300 hover:shadow-xl hover:shadow-stone-200/50 hover:-translate-y-1">
       {/* Image area — portrait marketing infographic, shown uncropped on white */}
-      <Link href={`/products/${product.slug}`} className="block relative">
+      <Link href={localePath(`/products/${product.slug}`)} className="block relative">
         <div className="relative aspect-[4/5] bg-white">
           <Image
             src={imageUrl}
@@ -71,7 +71,7 @@ export default function ProductCard({ product }: { product: ProductData }) {
           </div>
         )}
 
-        <Link href={`/products/${product.slug}`}>
+        <Link href={localePath(`/products/${product.slug}`)}>
           <h3 className="text-sm sm:text-base font-semibold text-stone-900 mb-1 group-hover:text-emerald-700 transition-colors leading-tight line-clamp-2">
             {name}
           </h3>
@@ -90,7 +90,7 @@ export default function ProductCard({ product }: { product: ProductData }) {
         {/* Actions */}
         <div className="flex items-center gap-1.5 sm:gap-2 pt-3 mt-2 border-t border-stone-100">
           <Link
-            href={`/products/${product.slug}`}
+            href={localePath(`/products/${product.slug}`)}
             className="flex-1 text-center px-2 py-2.5 text-[11px] sm:text-xs font-medium text-stone-600 hover:text-stone-900 bg-stone-50 hover:bg-stone-100 rounded-full transition-colors"
           >
             {locale === "es" ? "Detalles" : "Details"}

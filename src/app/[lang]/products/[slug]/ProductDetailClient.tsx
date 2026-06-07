@@ -36,7 +36,7 @@ import { cn } from "@/lib/utils";
 export default function ProductDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const { t, locale, country, whatsappLink } = useI18n();
+  const { t, locale, country, whatsappLink, localePath } = useI18n();
   const product = getProductBySlug(slug);
   const details = getProductDetails(slug);
   const [activeTab, setActiveTab] = useState<"ingredients" | "howToUse" | "details">("ingredients");
@@ -48,7 +48,7 @@ export default function ProductDetailPage() {
           <h1 className="text-2xl font-bold text-stone-900 mb-4">
             {locale === "es" ? "Producto no encontrado" : "Product not found"}
           </h1>
-          <Link href="/products" className="text-emerald-600 hover:underline">
+          <Link href={localePath("/products")} className="text-emerald-600 hover:underline">
             {t.products.backToProducts}
           </Link>
         </div>
@@ -84,7 +84,7 @@ export default function ProductDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back link */}
         <Link
-          href="/products"
+          href={localePath("/products")}
           className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-stone-900 mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />

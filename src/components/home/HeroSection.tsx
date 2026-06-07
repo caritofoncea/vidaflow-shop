@@ -15,7 +15,7 @@ import {
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
-  const { t, locale, whatsappLink } = useI18n();
+  const { t, locale, whatsappLink, localePath } = useI18n();
 
   const waMessage =
     locale === "es"
@@ -76,7 +76,7 @@ export default function HeroSection() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-5">
               <Link
-                href="/products"
+                href={localePath("/products")}
                 className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-emerald-700 hover:bg-emerald-800 text-white text-base font-semibold rounded-full transition-all hover:shadow-xl hover:shadow-emerald-700/20 group"
               >
                 {t.hero.shopNow}

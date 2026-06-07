@@ -15,7 +15,7 @@ const valueGradients = [
 ];
 
 export default function AboutPage() {
-  const { t, locale, whatsappLink } = useI18n();
+  const { t, locale, whatsappLink, localePath } = useI18n();
 
   return (
     <section className="min-h-screen bg-white">
@@ -39,7 +39,7 @@ export default function AboutPage() {
                 {t.about.storyP1}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <Link href="/products" className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-emerald-700 hover:bg-emerald-800 text-white text-base font-semibold rounded-full transition-all hover:shadow-xl hover:shadow-emerald-700/20 group">
+                <Link href={localePath("/products")} className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-emerald-700 hover:bg-emerald-800 text-white text-base font-semibold rounded-full transition-all hover:shadow-xl hover:shadow-emerald-700/20 group">
                   {locale === "es" ? "Ver Productos" : "Explore Products"}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>

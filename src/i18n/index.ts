@@ -30,25 +30,30 @@ interface I18nContextType {
   setCountry: (country: Country) => void;
   whatsappNumber: string;
   whatsappLink: (message?: string) => string;
+  localePath: (path: string) => string;
 }
 
 const I18nContext = createContext<I18nContextType | null>(null);
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
-  const [country, setCountryState] = useState<Country>("US");
+export function I18nProvider({
+  children,
+  initialLocale = "en",
+}: {
+  children: ReactNode;
+  initialLocale?: Locale;
+}) {
+  // Locale is driven by the URL ([lang] segment) for SEO. The provider is
+  // remounted per locale (keyed in the layout), so initialLocale is the
+  // source of truth — no localStorage/navigator detection for language.
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
+  // Country is a commerce toggle (pricing/availability), defaulted from the
+  // language and remembered in localStorage.
+  const [country, setCountryState] = useState<Country>(
+    initialLocale === "es" ? "GT" : "US"
+  );
 
   useEffect(() => {
-    const savedLocale = localStorage.getItem("vidaflow-locale") as Locale | null;
     const savedCountry = localStorage.getItem("vidaflow-country") as Country | null;
-
-    if (savedLocale && translations[savedLocale]) {
-      setLocaleState(savedLocale);
-    } else {
-      const browserLang = navigator.language.slice(0, 2);
-      if (browserLang === "es") setLocaleState("es");
-    }
-
     if (savedCountry) {
       setCountryState(savedCountry);
     }
@@ -56,7 +61,6 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
-    localStorage.setItem("vidaflow-locale", l);
   }, []);
 
   const setCountry = useCallback((c: Country) => {
@@ -74,6 +78,16 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     [whatsappNumber]
   );
 
+  // Prefix an app path with the current locale (/en, /es) for internal links.
+  const localePath = useCallback(
+    (path: string) => {
+      if (path === "/") return `/${locale}`;
+      if (path.startsWith("/#")) return `/${locale}${path.slice(1)}`;
+      return `/${locale}${path}`;
+    },
+    [locale]
+  );
+
   const value: I18nContextType = {
     locale,
     country,
@@ -82,6 +96,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     setCountry,
     whatsappNumber,
     whatsappLink,
+    localePath,
   };
 
   return React.createElement(I18nContext.Provider, { value }, children);

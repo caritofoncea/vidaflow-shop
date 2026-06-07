@@ -7,7 +7,7 @@ import { MessageCircle, Mail, Heart, Play, Music } from "lucide-react";
 import { InstagramIcon, FacebookIcon } from "@/components/ui/SocialIcons";
 
 export default function Footer() {
-  const { t, locale, whatsappLink } = useI18n();
+  const { t, locale, whatsappLink, localePath } = useI18n();
 
   return (
     <footer className="bg-stone-900 text-stone-300">
@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
+            <Link href={localePath("/")} className="flex items-center gap-2.5 mb-4">
               <Image
                 src="/images/logo-mark.webp"
                 alt="VidaFlow logo"
@@ -90,10 +90,10 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">{t.footer.quickLinks}</h3>
             <ul className="space-y-3">
-              <li><Link href="/" className="text-sm hover:text-emerald-400 transition-colors">{t.nav.home}</Link></li>
-              <li><Link href="/products" className="text-sm hover:text-emerald-400 transition-colors">{t.nav.products}</Link></li>
-              <li><Link href="/about" className="text-sm hover:text-emerald-400 transition-colors">{t.nav.about}</Link></li>
-              <li><Link href="/contact" className="text-sm hover:text-emerald-400 transition-colors">{t.nav.contact}</Link></li>
+              <li><Link href={localePath("/")} className="text-sm hover:text-emerald-400 transition-colors">{t.nav.home}</Link></li>
+              <li><Link href={localePath("/products")} className="text-sm hover:text-emerald-400 transition-colors">{t.nav.products}</Link></li>
+              <li><Link href={localePath("/about")} className="text-sm hover:text-emerald-400 transition-colors">{t.nav.about}</Link></li>
+              <li><Link href={localePath("/contact")} className="text-sm hover:text-emerald-400 transition-colors">{t.nav.contact}</Link></li>
             </ul>
           </div>
 
@@ -101,7 +101,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">{t.footer.support}</h3>
             <ul className="space-y-3">
-              <li><Link href="/#faq" className="text-sm hover:text-emerald-400 transition-colors">{t.footer.faqLink}</Link></li>
+              <li><Link href={localePath("/#faq")} className="text-sm hover:text-emerald-400 transition-colors">{t.footer.faqLink}</Link></li>
               <li><a href="#" className="text-sm hover:text-emerald-400 transition-colors">{t.footer.shippingPolicy}</a></li>
               <li><a href="#" className="text-sm hover:text-emerald-400 transition-colors">{t.footer.returnPolicy}</a></li>
               <li><a href="#" className="text-sm hover:text-emerald-400 transition-colors">{t.footer.privacyPolicy}</a></li>

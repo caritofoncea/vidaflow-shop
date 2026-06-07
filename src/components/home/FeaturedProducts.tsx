@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 import { useMemo } from "react";
 
 export default function FeaturedProducts() {
-  const { t, locale, country } = useI18n();
+  const { t, locale, country, localePath } = useI18n();
 
   const featured = useMemo(() => {
     const all = getVisibleProducts(country);
@@ -70,7 +70,7 @@ export default function FeaturedProducts() {
           className="text-center mt-12"
         >
           <Link
-            href="/products"
+            href={localePath("/products")}
             className="inline-flex items-center gap-2 px-6 py-3 text-emerald-700 font-semibold hover:text-emerald-800 transition-colors group"
           >
             {locale === "es" ? "Ver todos los productos" : "View all products"}
